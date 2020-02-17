@@ -15,7 +15,9 @@ const transporter = nodemailer.createTransport({
 
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 app.use(bodyParser.json()); // support json encoded bodies
-
+app.get('/', (req, res) => {
+  res.send('hello world');
+});
 app.post('/sendMail', (req, res) => {
   cors(req, res, () => {
     const name = req.body.name;
