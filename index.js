@@ -3,13 +3,13 @@ const nodemailer = require("nodemailer");
 const app = express()
 const cors = require("cors")({ origin: true });
 const bodyParser = require('body-parser');
-const GMAIL = require("./constants");
+// const GMAIL = require("./constants");
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: GMAIL.USER,
-    pass: GMAIL.PASS
+    user: process.env.GMAIL_USER,
+    pass: process.env.GMAIL_PASS
   }
 });
 
@@ -26,7 +26,7 @@ app.post('/sendMail', (req, res) => {
     if (name && mail && phone && message) {
       const mailOptions = {
         from: "Perso Website <franck-fernandez.com>",
-        to: GMAIL.DEST,
+        to: process.env.DEST,
         subject: `Website contact form - ${name}`,
         html: `<p>
           name: ${name.replace(/</g, "&lt;").replace(/>/g, "&gt;")}<br>
