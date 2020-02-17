@@ -1,7 +1,7 @@
 const express = require('express')
 const nodemailer = require("nodemailer");
 const app = express()
-const cors = require("cors")({ origin: true });
+const cors = require("cors");
 const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 5000
 
