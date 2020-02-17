@@ -3,6 +3,7 @@ const nodemailer = require("nodemailer");
 const app = express()
 const cors = require("cors")({ origin: true });
 const bodyParser = require('body-parser');
+const PORT = process.env.PORT || 5000
 // const GMAIL = require("./constants");
 
 const transporter = nodemailer.createTransport({
@@ -53,6 +54,6 @@ app.post('/sendMail', (req, res) => {
   });
 })
 
-app.listen(3000, () => {
-  console.log('Example app listening on port 3000!')
+app.listen(PORT, () => {
+  console.log(`Example app listening on port ${PORT}!`)
 })
