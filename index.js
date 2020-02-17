@@ -5,6 +5,7 @@ const cors = require("cors")({ origin: true });
 const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 5000
 
+
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
@@ -13,13 +14,15 @@ const transporter = nodemailer.createTransport({
   }
 });
 
+app.use(cors())
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 app.use(bodyParser.json()); // support json encoded bodies
+
 app.get('/', (req, res) => {
   res.send('hello world');
 });
+
 app.post('/sendMail', (req, res) => {
-  cors(req, res, () => {
     const name = req.body.name;
     const mail = req.body.mail;
     const phone = req.body.phone;
@@ -50,7 +53,6 @@ app.post('/sendMail', (req, res) => {
     }
 
     return res.send({ status: 400, message: "🤔" });
-  });
 })
 
 app.listen(PORT, () => {
