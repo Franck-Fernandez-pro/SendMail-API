@@ -4,7 +4,6 @@ const app = express()
 const cors = require("cors")({ origin: true });
 const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 5000
-// const GMAIL = require("./constants");
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
